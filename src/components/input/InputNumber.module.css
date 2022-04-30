@@ -1,0 +1,20 @@
+.input {
+    font-size: 30px;
+    text-align: center;
+    width: 140px;
+    height: 30px;
+    border: 3px solid rgba(42, 99, 143, 1);
+    border-radius: 15px;
+    transition: 0.2s;
+}
+
+.error {
+    font-size: 30px;
+    text-align: center;
+    width: 140px;
+    height: 30px;
+    border: 3px solid rgb(238, 0, 0);
+    border-radius: 15px;
+    background-color: rgba(255, 0, 0, 0.5);
+    transition: 0.2s;
+}
