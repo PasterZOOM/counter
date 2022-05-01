@@ -18,15 +18,7 @@ export const Scoreboard: React.FC<ScoreboardPropsType> =
         return (
             <div className={style.scoreboard}>
                 <div className={style.counter}>
-                    {status === 'error' ?
-                        <div className={style.redText}>
-                            Incorrect value!
-                        </div> :
-                        status === 'set' ?
-                            <div className={style.classicText}>
-                                Enter values and press "SET"
-                            </div> :
-                            <Counter value={value} maxValue={maxValue}/>}
+                    <Counter value={value} maxValue={maxValue} status={status}/>
                 </div>
                 <div className={style.buttons}>
                     <div>

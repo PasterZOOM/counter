@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {ChangeEvent} from 'react';
 import style from './InputNumber.module.css'
 
 
@@ -11,14 +11,15 @@ type InputNumberPropsType = {
 }
 
 export const InputNumber: React.FC<InputNumberPropsType> = ({callBack, value, error}) => {
+    const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
+        callBack(e.currentTarget.valueAsNumber)
+    }
     return (
         <div>
             <input className={error ? style.error : style.input}
                    type="number"
                    value={value}
-                   onChange={(e) => {
-                       callBack(e.currentTarget.valueAsNumber)
-                   }}
+                   onChange={onChangeHandler}
             />
         </div>
     )

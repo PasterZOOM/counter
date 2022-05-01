@@ -32,7 +32,7 @@ export const Settings: React.FC<ScoreboardPropsType> =
                         <div>
                             <InputNumber callBack={ChangeMaxValue}
                                          value={maxValue}
-                                         error={maxValue <= startValue}
+                                         error={maxValue <= startValue || maxValue <= 0}
                             />
                         </div>
                     </div>

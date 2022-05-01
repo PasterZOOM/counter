@@ -9,3 +9,15 @@
     text-align: center;
     transition: 0.5s;
 }
+.setText{
+    color: black;
+    font-size: 22px;
+    text-align: center;
+    padding-top: 74px;
+}
+.errorText{
+    color: red;
+    font-size: 34px;
+    text-align: center;
+    padding-top: 68px;
+}
