@@ -2,24 +2,30 @@ import React from 'react';
 import {Button} from '../button/Button';
 import style from './Settings.module.css'
 import {InputNumber} from '../input/InputNumber';
+import {StatusType} from '../../App';
 
 export type ScoreboardPropsType = {
-    value: number
     startValue: number
     maxValue: number
     ChangeStartValue: (value: number) => void
     ChangeMaxValue: (value: number) => void
-
+    status:StatusType
+    setStatus:(value:StatusType)=>void
 
 }
 
 export const Settings: React.FC<ScoreboardPropsType> =
-    ({value, startValue, maxValue, ChangeMaxValue, ChangeStartValue}) => {
-        const error = maxValue <= startValue ? style.settingStringError : style.settingString
+    ({startValue, maxValue, ChangeMaxValue, ChangeStartValue, setStatus, status}) => {
+
+    if (maxValue <= startValue || startValue < 0){
+            setStatus('error')
+        }
+
         return (
+
             <div className={style.setting}>
                 <div className={style.values}>
-                    <div className={error}>
+                    <div className={style.settingString}>
                         <div className={style.inputName}>
                             MAX VALUE
                         </div>
@@ -30,14 +36,14 @@ export const Settings: React.FC<ScoreboardPropsType> =
                             />
                         </div>
                     </div>
-                    <div className={error}>
+                    <div className={style.settingString}>
                         <div className={style.inputName}>
                             START VALUE
                         </div>
                         <div>
                             <InputNumber callBack={ChangeStartValue}
                                          value={startValue}
-                                         error={maxValue <= startValue}
+                                         error={maxValue <= startValue || startValue < 0}
                             />
                         </div>
                     </div>
@@ -45,9 +51,8 @@ export const Settings: React.FC<ScoreboardPropsType> =
                 <div className={style.button}>
                     <div>
                         <Button name={'SET'}
-                                callBack={() => {
-                                }}
-                                disabled={false}/>
+                                callBack={()=>setStatus('counter')}
+                                disabled={status !== 'set' || maxValue <= startValue || startValue < 0}/>
                     </div>
                 </div>
             </div>

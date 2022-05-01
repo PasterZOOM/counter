@@ -29,3 +29,15 @@
     margin-right: auto;
     margin-top: 10px;
 }
+.classicText{
+    color: black;
+    font-size: 22px;
+    text-align: center;
+    padding-top: 74px;
+}
+.redText{
+    color: red;
+    font-size: 34px;
+    text-align: center;
+    padding-top: 68px;
+}

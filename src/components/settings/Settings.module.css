@@ -38,13 +38,6 @@
     align-items: center;
     text-align: center;
 }
-.settingStringError{
-    color: red;
-    display: grid;
-    grid-template-columns: 40% 60%;
-    align-items: center;
-    text-align: center;
-}
 
 .inputName{
 

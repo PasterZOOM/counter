@@ -4,31 +4,30 @@ import {Scoreboard} from './components/scoreboard/Scoreboard';
 import {Settings} from './components/settings/Settings';
 import style from './App.module.css'
 
+export type StatusType = 'counter' | 'set' | 'error'
 
 function App() {
     let [startValue, setStartValue] = useState<number>(0)
     let [maxValue, setMaxValue] = useState<number>(5)
     let [count, setCount] = useState<number>(startValue)
-
+    let [status, setStatus] = useState<StatusType>('counter')
 
     useEffect(() => {
         let startValueAsString = localStorage.getItem('startValue')
-        if (startValueAsString) {
-            let newStartValue = JSON.parse(startValueAsString)
-            setStartValue(newStartValue)
-        }
-        let maxValueAsString = localStorage.getItem('maxValue')
-        if (maxValueAsString) {
-            let newMaxValue = JSON.parse(maxValueAsString)
-            setMaxValue(newMaxValue)
-        }
-    }, [])
+        startValueAsString && setStartValue(JSON.parse(startValueAsString))
 
+        let maxValueAsString = localStorage.getItem('maxValue')
+        maxValueAsString && setMaxValue(JSON.parse(maxValueAsString))
+
+        let statusAsString = localStorage.getItem('status')
+        statusAsString && setStatus(JSON.parse(statusAsString))
+
+    }, [])
     useEffect(() => {
         localStorage.setItem('startValue', JSON.stringify(startValue))
         localStorage.setItem('maxValue', JSON.stringify(maxValue))
-    }, [startValue, maxValue])
-
+        localStorage.setItem('status', JSON.stringify(status))
+    }, [startValue, maxValue, status])
 
     const Inc = () => {
         if (count < maxValue) {
@@ -37,25 +36,26 @@ function App() {
     }
     const Reset = () => {
         setCount(startValue)
-
     }
 
     const ChangeStartValue = (value: number) => {
         setStartValue(value)
+        setStatus('set')
     }
     const ChangeMaxValue = (value: number) => {
         setMaxValue(value)
+        setStatus('set')
     }
-
 
     return (
         <div className={style.general}>
             <div>
-                <Settings value={count}
-                          startValue={startValue}
+                <Settings startValue={startValue}
                           maxValue={maxValue}
                           ChangeStartValue={ChangeStartValue}
                           ChangeMaxValue={ChangeMaxValue}
+                          status={status}
+                          setStatus={setStatus}
                 />
             </div>
             <div>
@@ -64,6 +64,7 @@ function App() {
                             maxValue={maxValue}
                             Inc={Inc}
                             Reset={Reset}
+                            status={status}
                 />
             </div>
         </div>
