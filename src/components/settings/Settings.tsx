@@ -43,7 +43,7 @@ export const Settings: React.FC<ScoreboardPropsType> =
                         <div>
                             <InputNumber callBack={ChangeStartValue}
                                          value={startValue}
-                                         error={maxValue <= startValue || startValue < 0}
+                                         error={status === 'error'}
                             />
                         </div>
                     </div>
@@ -52,7 +52,7 @@ export const Settings: React.FC<ScoreboardPropsType> =
                     <div>
                         <Button name={'SET'}
                                 callBack={()=>setStatus('counter')}
-                                disabled={status !== 'set' || maxValue <= startValue || startValue < 0}/>
+                                disabled={status !== 'set'}/>
                     </div>
                 </div>
             </div>
