@@ -3,12 +3,12 @@ import style from './Counter.module.css'
 import {StatusType} from '../../App';
 
 type MeaningPropsType = {
-    value: number
+    count: number
     maxValue: number
     status: StatusType
 }
 
-export const Counter: React.FC<MeaningPropsType> = ({value, maxValue, status}) => {
+export const Counter: React.FC<MeaningPropsType> = ({count, maxValue, status}) => {
     return (
         status === 'error' ?
             <div className={style.errorText}>
@@ -18,8 +18,8 @@ export const Counter: React.FC<MeaningPropsType> = ({value, maxValue, status}) =
                 <div className={style.setText}>
                     Enter values and press "SET"
                 </div> :
-                <div className={value === maxValue ? style.redText : style.classicText}>
-                    {value}
+                <div className={count === maxValue ? style.redText : style.classicText}>
+                    {count}
                 </div>
     )
 }

@@ -56,10 +56,11 @@ function App() {
                           ChangeMaxValue={ChangeMaxValue}
                           status={status}
                           setStatus={setStatus}
+                          setCount = {setCount}
                 />
             </div>
             <div>
-                <Scoreboard value={count}
+                <Scoreboard count={count}
                             startValue={startValue}
                             maxValue={maxValue}
                             Inc={Inc}
