@@ -19,6 +19,7 @@ export const InputNumber: React.FC<InputNumberPropsType> = ({callBack, value, er
             <input className={error ? style.error : style.input}
                    type="number"
                    value={value}
+                   max="9999"
                    onChange={onChangeHandler}
             />
         </div>

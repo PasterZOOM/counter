@@ -39,11 +39,15 @@ function App() {
     }
 
     const ChangeStartValue = (value: number) => {
-        setStartValue(value)
+        isNaN(value) ? setStartValue(0) :
+            value > 9999 ? setStartValue(9999) :
+                setStartValue(value)
         setStatus('set')
     }
     const ChangeMaxValue = (value: number) => {
-        setMaxValue(value)
+        isNaN(value) ? setMaxValue(0) :
+            value > 9999 ? setMaxValue(9999) :
+                setMaxValue(value)
         setStatus('set')
     }
 
@@ -56,7 +60,7 @@ function App() {
                           ChangeMaxValue={ChangeMaxValue}
                           status={status}
                           setStatus={setStatus}
-                          setCount = {setCount}
+                          setCount={setCount}
                 />
             </div>
             <div>
