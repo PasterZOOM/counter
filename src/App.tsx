@@ -10,11 +10,16 @@ function App() {
     let [startValue, setStartValue] = useState<number>(0)
     let [maxValue, setMaxValue] = useState<number>(5)
     let [count, setCount] = useState<number>(startValue)
-    let [status, setStatus] = useState<StatusType>('counter')
+    let [status, setStatus] = useState<StatusType>('set')
 
     useEffect(() => {
         let startValueAsString = localStorage.getItem('startValue')
-        startValueAsString && setStartValue(JSON.parse(startValueAsString))
+        // startValueAsString && setStartValue(JSON.parse(startValueAsString))
+        // startValueAsString && setCount(JSON.parse(startValueAsString))
+        if (startValueAsString){
+            setStartValue(JSON.parse(startValueAsString))
+            setCount(JSON.parse(startValueAsString))
+        }
 
         let maxValueAsString = localStorage.getItem('maxValue')
         maxValueAsString && setMaxValue(JSON.parse(maxValueAsString))
