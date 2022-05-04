@@ -14,13 +14,17 @@ export const InputNumber: React.FC<InputNumberPropsType> = ({callBack, value, er
     const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
         callBack(e.currentTarget.valueAsNumber)
     }
+    const onBlurHandler = () => {
+        isNaN(value) && callBack(0)
+    }
+
     return (
         <div>
             <input className={error ? style.error : style.input}
                    type="number"
                    value={value}
-                   max="9999"
                    onChange={onChangeHandler}
+                   onBlur={ onBlurHandler }
             />
         </div>
     )

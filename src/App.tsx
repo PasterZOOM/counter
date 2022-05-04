@@ -16,7 +16,7 @@ function App() {
         let startValueAsString = localStorage.getItem('startValue')
         // startValueAsString && setStartValue(JSON.parse(startValueAsString))
         // startValueAsString && setCount(JSON.parse(startValueAsString))
-        if (startValueAsString){
+        if (startValueAsString) {
             setStartValue(JSON.parse(startValueAsString))
             setCount(JSON.parse(startValueAsString))
         }
@@ -44,15 +44,13 @@ function App() {
     }
 
     const ChangeStartValue = (value: number) => {
-        isNaN(value) ? setStartValue(0) :
-            value > 9999 ? setStartValue(9999) :
-                setStartValue(value)
+        value > 9999 ? setStartValue(9999) :
+            setStartValue(value)
         setStatus('set')
     }
     const ChangeMaxValue = (value: number) => {
-        isNaN(value) ? setMaxValue(0) :
-            value > 9999 ? setMaxValue(9999) :
-                setMaxValue(value)
+        value > 9999 ? setMaxValue(9999) :
+            setMaxValue(value)
         setStatus('set')
     }
 
