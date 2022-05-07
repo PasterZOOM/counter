@@ -20,6 +20,7 @@
 .counter {
     display: flex;
     justify-content: center;
+    align-items: center;
     width: 280px;
     height: 180px;
     background: rgba(42, 99, 143, 1);
