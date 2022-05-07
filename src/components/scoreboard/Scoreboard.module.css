@@ -1,21 +1,25 @@
 .scoreboard {
+    margin-left: 20px;
     border: 3px solid rgba(42, 99, 143, 1);
     border-radius: 20px;
     width: 300px;
     height: 280px;
-    margin: 20px;
     box-shadow: 1px 2px 5px black;
     transition: 0.2s;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
 }
+
 .scoreboard:hover {
     box-shadow: 2px 5px 10px black;
     transform: translateY(-3px);
 }
 
 .counter {
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 10px;
+    display: flex;
+    justify-content: center;
     width: 280px;
     height: 180px;
     background: rgba(42, 99, 143, 1);
@@ -24,16 +28,12 @@
 }
 
 .buttons {
-    display: grid;
-    grid-template-columns: 50% 50%;
+    display: flex;
+    justify-content: space-evenly;
     align-items: center;
-    text-align: center;
     width: 280px;
     height: 65px;
     border: 3px solid rgba(42, 99, 143, 1);
     border-radius: 20px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 10px;
     box-shadow: inset 1px 2px 5px black;
 }
