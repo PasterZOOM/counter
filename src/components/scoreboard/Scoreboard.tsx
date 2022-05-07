@@ -29,12 +29,14 @@ export const Scoreboard: React.FC<ScoreboardPropsType> =
                     <div>
                         <Button name={'INC'}
                                 callBack={Inc}
-                                disabled={count === maxValue || status !== 'counter'}/>
+                                disabled={count === maxValue
+                                    || status !== 'counter'}/>
                     </div>
                     <div>
                         <Button name={'RESET'}
                                 callBack={Reset}
-                                disabled={count === startValue || status !== 'counter'}/>
+                                disabled={count === startValue
+                                    || status !== 'counter'}/>
                     </div>
                 </div>
             </div>

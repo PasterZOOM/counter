@@ -10,9 +10,9 @@ type InputNumberPropsType = {
 
 export const InputNumber: React.FC<InputNumberPropsType> =
     ({value, error, callBack}) => {
+
         const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) =>
             callBack(e.currentTarget.valueAsNumber)
-
         const onBlurHandler = () => isNaN(value) && callBack(0)
 
         return (
