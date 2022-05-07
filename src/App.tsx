@@ -7,10 +7,11 @@ import style from './App.module.css'
 export type StatusType = 'counter' | 'set' | 'error'
 
 function App() {
+
+    let [status, setStatus] = useState<StatusType>('set')
     let [startValue, setStartValue] = useState<number>(0)
     let [maxValue, setMaxValue] = useState<number>(5)
     let [count, setCount] = useState<number>(startValue)
-    let [status, setStatus] = useState<StatusType>('set')
 
     useEffect(() => {
         let startValueAsString = localStorage.getItem('startValue')
@@ -43,36 +44,36 @@ function App() {
         setCount(startValue)
     }
 
-    const ChangeStartValue = (value: number) => {
-        value > 9999 ? setStartValue(9999) :
-            setStartValue(value)
-        setStatus('set')
-    }
     const ChangeMaxValue = (value: number) => {
         value > 9999 ? setMaxValue(9999) :
             setMaxValue(value)
+        setStatus('set')
+    }
+    const ChangeStartValue = (value: number) => {
+        value > 9999 ? setStartValue(9999) :
+            setStartValue(value)
         setStatus('set')
     }
 
     return (
         <div className={style.general}>
             <div>
-                <Settings startValue={startValue}
+                <Settings status={status}
                           maxValue={maxValue}
-                          ChangeStartValue={ChangeStartValue}
-                          ChangeMaxValue={ChangeMaxValue}
-                          status={status}
-                          setStatus={setStatus}
+                          startValue={startValue}
                           setCount={setCount}
+                          setStatus={setStatus}
+                          ChangeMaxValue={ChangeMaxValue}
+                          ChangeStartValue={ChangeStartValue}
                 />
             </div>
             <div>
                 <Scoreboard count={count}
-                            startValue={startValue}
+                            status={status}
                             maxValue={maxValue}
+                            startValue={startValue}
                             Inc={Inc}
                             Reset={Reset}
-                            status={status}
                 />
             </div>
         </div>

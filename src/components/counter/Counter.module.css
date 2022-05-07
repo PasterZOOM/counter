@@ -1,5 +1,5 @@
 .classicText{
-    color: black;
+    color: white;
     font-size: 120px;
     text-align: center;
 }
@@ -10,7 +10,7 @@
     transition: 0.5s;
 }
 .setText{
-    color: black;
+    color: white;
     font-size: 22px;
     text-align: center;
     padding-top: 74px;

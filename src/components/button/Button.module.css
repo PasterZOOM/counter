@@ -2,30 +2,31 @@
     font-size: 25px;
     width: 125px;
     height: 45px;
+    color: white;
     border: 3px solid rgba(42, 99, 143, 1);
     border-radius: 15px;
-    background: rgba(42, 99, 143, 0.25);
+    background: rgba(42, 99, 143, 1);
     transition: 0.2s;
     box-shadow: 0 2px 5px black;
 }
 
 .button:hover {
-    background: rgba(42, 99, 143, 0.5);
+    box-shadow: 0 4px 7px black;
+    transform: translateY(-2px);
 }
 
 .button:active {
-    box-shadow: none;
-    background: rgba(42, 99, 143, 0.75);
-    transform: translateY(1.5px);
+    box-shadow: 0 2px 5px black;
+    transform: translateY(0px);
 }
 
 .button:disabled {
     width: 125px;
     height: 45px;
-    color: black;
-    border: 3px solid #2a638f;
+    color: #bdbdbd;
+    border: 3px solid rgba(42, 99, 143, 1);
     border-radius: 15px;
-    box-shadow: none;
-    background: rgba(42, 99, 143, 0.75);
-    transform: translateY(1.5px);
+    box-shadow: 0 2px 5px black;
+    background: rgba(42, 99, 143, 1);
+    transform: translateY(0px);
 }

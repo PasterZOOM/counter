@@ -6,15 +6,20 @@ import {StatusType} from '../../App';
 
 export type ScoreboardPropsType = {
     count: number
-    startValue: number
     maxValue: number
+    startValue: number
+    status: StatusType
     Inc: () => void
     Reset: () => void
-    status: StatusType
+
 }
 
 export const Scoreboard: React.FC<ScoreboardPropsType> =
-    ({count, Inc, Reset, startValue, maxValue, status}) => {
+    ({
+         count, maxValue, startValue, status,
+         Inc, Reset
+     }) => {
+
         return (
             <div className={style.scoreboard}>
                 <div className={style.counter}>

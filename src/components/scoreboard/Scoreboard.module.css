@@ -1,5 +1,5 @@
 .scoreboard {
-    border: 3px solid #2a638f;
+    border: 3px solid rgba(42, 99, 143, 1);
     border-radius: 20px;
     width: 300px;
     height: 280px;
@@ -12,7 +12,7 @@
     margin-top: 10px;
     width: 280px;
     height: 180px;
-    background: #2a638f;
+    background: rgba(42, 99, 143, 1);
     border-radius: 20px;
 }
 
@@ -23,7 +23,7 @@
     text-align: center;
     width: 280px;
     height: 65px;
-    border: 3px solid #2a638f;
+    border: 3px solid rgba(42, 99, 143, 1);
     border-radius: 20px;
     margin-left: auto;
     margin-right: auto;

@@ -5,28 +5,28 @@ import {InputNumber} from '../input/InputNumber';
 import {StatusType} from '../../App';
 
 export type ScoreboardPropsType = {
-    startValue: number
-    maxValue: number
-    ChangeStartValue: (value: number) => void
-    ChangeMaxValue: (value: number) => void
     status: StatusType
+    maxValue: number
+    startValue: number
+    setCount: (startValue: number) => void
     setStatus: (value: StatusType) => void
-    setCount:(startValue: number) => void
+    ChangeMaxValue: (value: number) => void
+    ChangeStartValue: (value: number) => void
 }
 
 export const Settings: React.FC<ScoreboardPropsType> =
-    ({startValue, maxValue, ChangeMaxValue, ChangeStartValue, setStatus, status,setCount}) => {
+    ({
+         status, maxValue, startValue,
+         setCount, setStatus, ChangeMaxValue, ChangeStartValue
+     }) => {
 
-        if (maxValue <= startValue || startValue < 0) {
-            setStatus('error')
-        }
+        (maxValue <= startValue || startValue < 0) && setStatus('error')
         const setButtonOnChange = () => {
-            setStatus('counter')
+            setStatus('counter');
             setCount(startValue)
         }
 
         return (
-
             <div className={style.setting}>
                 <div className={style.values}>
                     <div className={style.settingString}>
@@ -34,8 +34,8 @@ export const Settings: React.FC<ScoreboardPropsType> =
                             MAX VALUE
                         </div>
                         <div>
-                            <InputNumber callBack={ChangeMaxValue}
-                                         value={maxValue}
+                            <InputNumber value={maxValue}
+                                         callBack={ChangeMaxValue}
                                          error={maxValue <= startValue || maxValue <= 0}
                             />
                         </div>
@@ -45,8 +45,8 @@ export const Settings: React.FC<ScoreboardPropsType> =
                             START VALUE
                         </div>
                         <div>
-                            <InputNumber callBack={ChangeStartValue}
-                                         value={startValue}
+                            <InputNumber value={startValue}
+                                         callBack={ChangeStartValue}
                                          error={status === 'error'}
                             />
                         </div>
