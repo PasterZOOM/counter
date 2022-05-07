@@ -5,6 +5,12 @@
     height: 280px;
     margin: 20px;
     color: white;
+    box-shadow: 0 2px 5px black;
+    transition: 0.2s;
+}
+.setting:hover {
+    box-shadow: 2px 5px 10px black;
+    transform: translateY(-3px);
 }
 
 .values {
@@ -17,6 +23,7 @@
     height: 180px;
     background: rgba(42, 99, 143, 1);
     border-radius: 20px;
+    box-shadow: inset 0 2px 5px black;
 }
 
 .button {
@@ -31,6 +38,7 @@
     margin-left: auto;
     margin-right: auto;
     margin-top: 10px;
+    box-shadow: inset 1px 2px 5px black;
 }
 
 .settingString{
@@ -38,8 +46,5 @@
     grid-template-columns: 40% 60%;
     align-items: center;
     text-align: center;
-}
-
-.inputName{
-
+    text-shadow: 1px 2px 5px black;
 }

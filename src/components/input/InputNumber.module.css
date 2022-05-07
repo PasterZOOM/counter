@@ -4,20 +4,40 @@
     width: 140px;
     height: 30px;
     color: rgba(42, 99, 143, 1);
-    border: 3px solid rgba(42, 99, 143, 1);
+    border:none;
     border-radius: 15px;
     transition: 0.2s;
     outline:none;
+    box-shadow: 1px 2px 5px black;
+    text-shadow: 1px 2px 1px black;
+}
+.input:hover {
+    box-shadow: 2px 4px 7px black;
+    transform: translateY(-2px);
+}
+.input:focus {
+    box-shadow: 2px 4px 7px black;
+    transform: translateY(-2px);
 }
 
 .error {
-    outline:none;
+    outline: none;
     font-size: 30px;
     text-align: center;
     width: 140px;
     height: 30px;
-    border: 3px solid rgb(238, 0, 0);
+    border:none;
     border-radius: 15px;
     color: rgb(238, 0, 0);
     transition: 0.2s;
+    box-shadow: 1px 2px 5px black;
+    text-shadow: 1px 2px 1px black;
+}
+.error:hover {
+    box-shadow: 2px 4px 7px black;
+    transform: translateY(-2px);
+}
+.error:focus {
+    box-shadow: 2px 4px 7px black;
+    transform: translateY(-2px);
 }

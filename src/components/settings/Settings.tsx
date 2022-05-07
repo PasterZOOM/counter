@@ -30,9 +30,7 @@ export const Settings: React.FC<ScoreboardPropsType> =
             <div className={style.setting}>
                 <div className={style.values}>
                     <div className={style.settingString}>
-                        <div className={style.inputName}>
-                            MAX VALUE
-                        </div>
+                            MAX VALUE:
                         <div>
                             <InputNumber value={maxValue}
                                          callBack={ChangeMaxValue}
@@ -41,9 +39,7 @@ export const Settings: React.FC<ScoreboardPropsType> =
                         </div>
                     </div>
                     <div className={style.settingString}>
-                        <div className={style.inputName}>
-                            START VALUE
-                        </div>
+                            START VALUE:
                         <div>
                             <InputNumber value={startValue}
                                          callBack={ChangeStartValue}

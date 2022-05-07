@@ -15,8 +15,6 @@ function App() {
 
     useEffect(() => {
         let startValueAsString = localStorage.getItem('startValue')
-        // startValueAsString && setStartValue(JSON.parse(startValueAsString))
-        // startValueAsString && setCount(JSON.parse(startValueAsString))
         if (startValueAsString) {
             setStartValue(JSON.parse(startValueAsString))
             setCount(JSON.parse(startValueAsString))
