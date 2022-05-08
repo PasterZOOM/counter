@@ -19,8 +19,8 @@ export const Counter: React.FC<CounterPropsType> =
                 status === 'set' ?
                     <div className={style.setText}>
                         Enter values and press "SET"
-                    </div>
-                    : <CounterValue count={count} maxValue={maxValue}/>
+                    </div> :
+                    <CounterValue count={count} maxValue={maxValue}/>
 
         )
     }

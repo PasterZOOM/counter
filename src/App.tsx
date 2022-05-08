@@ -36,15 +36,15 @@ function App() {
     const Reset = () => setCount(startValue)
     const Inc = () => count < maxValue && setCount(count + 1)
 
-    const ChangeMaxValue = (value: number) => {
-        setMaxValue(value)
-        setStatus('set')
-
-    }
     const ChangeStartValue = (value: number) => {
-        setStartValue(value)
+        value > 9999 ? setStartValue(9999) :
+            setStartValue(value)
         setStatus('set')
-
+    }
+    const ChangeMaxValue = (value: number) => {
+        value > 9999 ? setMaxValue(9999) :
+            setMaxValue(value)
+        setStatus('set')
     }
 
     return (
