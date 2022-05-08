@@ -1,12 +1,10 @@
-
-.setText {
+.classicText {
     color: white;
-    font-size: 22px;
     text-shadow: 1px 2px 5px black;
 }
 
-.errorText {
+.redText {
     color: red;
-    font-size: 34px;
+    transition: 0.5s;
     text-shadow: 1px 2px 5px black;
 }
