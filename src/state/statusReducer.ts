@@ -1,11 +1,11 @@
 import {StatusType} from '../App';
 
-const SET_SET = 'SET_SET'
 const SET_ERROR = 'SET_ERROR'
 const SET_COUNTER = 'SET_COUNTER'
+const SET_SETTING = 'SET_SETTING'
 
 export type setSetAT = {
-    type: typeof SET_SET,
+    type: typeof SET_SETTING,
 }
 export type setErrorAT = {
     type: typeof SET_ERROR,
@@ -18,7 +18,7 @@ type actionsType = setSetAT | setErrorAT | setCounterAT
 
 export const statusReducer = (status: StatusType, action: actionsType): StatusType => {
     switch (action.type) {
-        case SET_SET:
+        case SET_SETTING:
             return 'setting'
         case SET_ERROR:
             return 'error'
@@ -29,6 +29,6 @@ export const statusReducer = (status: StatusType, action: actionsType): StatusTy
     }
 }
 
-export const setSetAC = (): setSetAT => ({type: SET_SET})
 export const setErrorAC = (): setErrorAT => ({type: SET_ERROR});
+export const setSettingAC = (): setSetAT => ({type: SET_SETTING})
 export const setCounterAC = (): setCounterAT => ({type: SET_COUNTER})

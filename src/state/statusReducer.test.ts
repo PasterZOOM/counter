@@ -1,7 +1,7 @@
-import {setCounterAC, setErrorAC, setSetAC, statusReducer} from './statusReducer';
+import {setCounterAC, setErrorAC, setSettingAC, statusReducer} from './statusReducer';
 
 test('status should change to set', () => {
-    const newStatus = statusReducer('error', setSetAC())
+    const newStatus = statusReducer('error', setSettingAC())
 
     expect(newStatus).toBe('setting')
 })

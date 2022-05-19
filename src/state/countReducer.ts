@@ -6,6 +6,7 @@ export type incAT = {
 }
 export type resetAT = {
     type: typeof RESET,
+    payload: { startValue: number }
 }
 
 type actionsType = incAT | resetAT
@@ -15,11 +16,14 @@ export const countReducer = (count: number, action: actionsType): number => {
         case INC:
             return count + 1
         case RESET:
-            return 0
+            return action.payload.startValue
         default:
             throw new Error('I don\'t understand this type')
     }
 }
 
 export const incAC = (): incAT => ({type: INC})
-export const resetAC = (): resetAT => ({type: RESET})
+export const resetAC = (startValue: number): resetAT => ({
+    type: RESET,
+    payload: {startValue: startValue}
+})

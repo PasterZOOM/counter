@@ -6,7 +6,7 @@ test('count should be +1', () => {
     expect(newCount).toBe(3)
 })
 test('count should be 0', () => {
-    const newCount = countReducer(10, resetAC())
+    const newCount = countReducer(10, resetAC(4))
 
-    expect(newCount).toBe(0)
+    expect(newCount).toBe(4)
 })

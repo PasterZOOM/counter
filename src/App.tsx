@@ -3,6 +3,9 @@ import './App.module.css';
 import {Scoreboard} from './components/scoreboard/Scoreboard';
 import {Settings} from './components/settings/Settings';
 import style from './App.module.css'
+import {countReducer, incAC, resetAC} from './state/countReducer';
+import {inputValueReducer, setInputValueAC} from './state/inputValueReducer';
+import {setSettingAC, statusReducer} from './state/statusReducer';
 
 export type StatusType = 'counter' | 'setting' | 'error'
 
@@ -33,18 +36,18 @@ function App() {
         localStorage.setItem('status', JSON.stringify(status))
     }, [startValue, maxValue, status])
 
-    const Reset = () => setCount(startValue)
-    const Inc = () => count < maxValue && setCount(count + 1)
+    const Reset = () => setCount(countReducer(count, resetAC(startValue)))
+    const Inc = () => count < maxValue && setCount(countReducer(count, incAC()))
 
     const ChangeStartValue = (value: number) => {
-        value > 9999 ? setStartValue(9999) :
-            setStartValue(value)
-        setStatus('setting')
+        value > 9999 ? setStartValue(inputValueReducer(startValue, setInputValueAC(9999))) :
+            setStartValue(inputValueReducer(startValue, setInputValueAC(value)))
+        setStatus(statusReducer(status, setSettingAC()))
     }
     const ChangeMaxValue = (value: number) => {
-        value > 9999 ? setMaxValue(9999) :
-            setMaxValue(value)
-        setStatus('setting')
+        value > 9999 ? setMaxValue(inputValueReducer(maxValue, setInputValueAC(9999))) :
+            setMaxValue(inputValueReducer(maxValue, setInputValueAC(value)))
+        setStatus(statusReducer(status, setSettingAC()))
     }
 
     return (
