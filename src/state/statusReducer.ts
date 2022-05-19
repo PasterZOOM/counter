@@ -19,7 +19,7 @@ type actionsType = setSetAT | setErrorAT | setCounterAT
 export const statusReducer = (state: StatusType, action: actionsType): StatusType => {
     switch (action.type) {
         case 'SET_SET':
-            return 'set'
+            return 'setting'
         case 'SET_ERROR':
             return 'error'
         case 'SET_COUNTER':

@@ -16,7 +16,7 @@ export const Counter: React.FC<CounterPropsType> =
                 <div className={style.errorText}>
                     Incorrect value!
                 </div> :
-                status === 'set' ?
+                status === 'setting' ?
                     <div className={style.setText}>
                         Enter values and press "SET"
                     </div> :

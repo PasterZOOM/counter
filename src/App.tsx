@@ -4,11 +4,11 @@ import {Scoreboard} from './components/scoreboard/Scoreboard';
 import {Settings} from './components/settings/Settings';
 import style from './App.module.css'
 
-export type StatusType = 'counter' | 'set' | 'error'
+export type StatusType = 'counter' | 'setting' | 'error'
 
 function App() {
 
-    let [status, setStatus] = useState<StatusType>('set')
+    let [status, setStatus] = useState<StatusType>('setting')
     let [startValue, setStartValue] = useState<number>(0)
     let [maxValue, setMaxValue] = useState<number>(5)
     let [count, setCount] = useState<number>(startValue)
@@ -39,12 +39,12 @@ function App() {
     const ChangeStartValue = (value: number) => {
         value > 9999 ? setStartValue(9999) :
             setStartValue(value)
-        setStatus('set')
+        setStatus('setting')
     }
     const ChangeMaxValue = (value: number) => {
         value > 9999 ? setMaxValue(9999) :
             setMaxValue(value)
-        setStatus('set')
+        setStatus('setting')
     }
 
     return (
