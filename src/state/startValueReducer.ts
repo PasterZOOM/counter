@@ -1,11 +1,11 @@
 const SET_START_VALUE = 'SET_START_VALUE'
 
-export type setValueAT = {
+export type setStartValueAT = {
     type: typeof SET_START_VALUE,
     payload: { value: number }
 }
 
-type actionsType = setValueAT
+type actionsType = setStartValueAT
 
 export const startValueReducer = (value: number, action: actionsType): number => {
     switch (action.type) {
@@ -16,4 +16,7 @@ export const startValueReducer = (value: number, action: actionsType): number =>
     }
 }
 
-export const setValueAC = (newValue: number): setValueAT => ({type: SET_START_VALUE, payload: {value: newValue}})
+export const setStartValueAC = (newValue: number): setStartValueAT => ({
+    type: SET_START_VALUE,
+    payload: {value: newValue}
+})
