@@ -1,12 +1,12 @@
 import {countReducer, incAC, resetAC} from './countReducer';
 
 test('count should be +1', () => {
-    const newCount = countReducer(2, incAC())
+    const newCount = countReducer({value: 0}, incAC())
 
-    expect(newCount).toBe(3)
+    expect(newCount.value).toBe(1)
 })
-test('count should be 0', () => {
-    const newCount = countReducer(10, resetAC())
+test('count should be change', () => {
+    const newCount = countReducer({value: 10}, resetAC(6))
 
-    expect(newCount).toBe(0)
+    expect(newCount.value).toBe( 6)
 })

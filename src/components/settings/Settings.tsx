@@ -3,13 +3,16 @@ import {Button} from '../button/Button';
 import style from './Settings.module.css'
 import {InputNumber} from '../input/InputNumber';
 import {StatusType} from '../../App';
+import {Dispatch} from 'redux';
+import {setCounterAC, setErrorAC} from '../../state/statusReducer';
+import {resetAC} from '../../state/countReducer';
 
 export type ScoreboardPropsType = {
     status: StatusType
     maxValue: number
     startValue: number
-    setCount: (startValue: number) => void
-    setStatus: (value: StatusType) => void
+    setCount: Dispatch//(startValue: number) => void
+    setStatus: Dispatch//(value: StatusType) => void
     ChangeMaxValue: (value: number) => void
     ChangeStartValue: (value: number) => void
 }
@@ -20,10 +23,10 @@ export const Settings: React.FC<ScoreboardPropsType> =
          setCount, setStatus, ChangeMaxValue, ChangeStartValue
      }) => {
 
-        (maxValue <= startValue || startValue < 0) && setStatus('error')
+        (maxValue <= startValue || startValue < 0) && setStatus(setErrorAC())
         const setButtonOnChange = () => {
-            setStatus('counter');
-            setCount(startValue)
+            setStatus(setCounterAC())
+            setCount(resetAC(startValue))
         }
 
         return (

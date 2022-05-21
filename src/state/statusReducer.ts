@@ -16,16 +16,21 @@ export type setCounterAT = {
 
 type actionsType = setSetAT | setErrorAT | setCounterAT
 
-export const statusReducer = (status: StatusType, action: actionsType): StatusType => {
+const initialState = {
+    value: 'setting' as StatusType
+}
+type InitialStateType = typeof initialState
+
+export const statusReducer = (status: InitialStateType = initialState, action: actionsType): InitialStateType => {
     switch (action.type) {
         case SET_SET:
-            return 'setting'
+            return {...status, value:'setting'}
         case SET_ERROR:
-            return 'error'
+            return {...status, value:'error'}
         case SET_COUNTER:
-            return 'counter'
+            return {...status, value:'counter'}
         default:
-            throw new Error('I don\'t understand this type')
+            return status
     }
 }
 

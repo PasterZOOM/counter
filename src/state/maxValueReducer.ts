@@ -6,13 +6,17 @@ export type setMaxValueAT = {
 }
 
 type actionsType = setMaxValueAT
+const initialState = {
+    value: 5
+}
+type InitialStateType = typeof initialState
 
-export const maxValueReducer = (value: number, action: actionsType): number => {
+export const maxValueReducer = (value: InitialStateType = initialState, action: actionsType): InitialStateType => {
     switch (action.type) {
         case 'SET_MAX_VALUE':
-            return action.payload.value
+            return {...value, value: action.payload.value}
         default:
-            throw new Error('I don\'t understand this type')
+            return value
     }
 }
 

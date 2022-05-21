@@ -1,17 +1,17 @@
 import {setCounterAC, setErrorAC, setSetAC, statusReducer} from './statusReducer';
 
 test('status should change to set', () => {
-    const newStatus = statusReducer('error', setSetAC())
+    const newStatus = statusReducer({value:'error'}, setSetAC())
 
-    expect(newStatus).toBe('setting')
+    expect(newStatus.value).toBe('setting')
 })
 test('status should change to error', () => {
-    const newStatus = statusReducer('counter', setErrorAC())
+    const newStatus = statusReducer({value:'counter'}, setErrorAC())
 
-    expect(newStatus).toBe('error')
+    expect(newStatus.value).toBe('error')
 })
 test('status should change to counter', () => {
-    const newStatus = statusReducer('setting', setCounterAC())
+    const newStatus = statusReducer({value:'setting'}, setCounterAC())
 
-    expect(newStatus).toBe('counter')
+    expect(newStatus.value).toBe('counter')
 })

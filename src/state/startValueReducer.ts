@@ -7,12 +7,17 @@ export type setStartValueAT = {
 
 type actionsType = setStartValueAT
 
-export const startValueReducer = (value: number, action: actionsType): number => {
+const initialState = {
+    value: 0
+}
+type InitialStateType = typeof initialState
+
+export const startValueReducer = (value: InitialStateType = initialState, action: actionsType): InitialStateType => {
     switch (action.type) {
         case 'SET_START_VALUE':
-            return action.payload.value
+            return {...value, value: action.payload.value}
         default:
-            throw new Error('I don\'t understand this type')
+            return value
     }
 }
 
