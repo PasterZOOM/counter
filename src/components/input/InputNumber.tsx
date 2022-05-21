@@ -1,5 +1,6 @@
 import React, {ChangeEvent} from 'react';
 import style from './InputNumber.module.css'
+import {inputValueReducer, setInputValueAC} from '../../state/inputValueReducer';
 
 
 type InputNumberPropsType = {
@@ -13,7 +14,7 @@ export const InputNumber: React.FC<InputNumberPropsType> =
 
         const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) =>
             callBack(e.currentTarget.valueAsNumber)
-        const onBlurHandler = () => isNaN(value) && callBack(0)
+        const onBlurHandler = () => isNaN(value) && callBack(inputValueReducer(value, setInputValueAC(0)))
 
         return (
             <div>
