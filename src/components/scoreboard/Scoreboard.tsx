@@ -11,34 +11,33 @@ export type ScoreboardPropsType = {
     status: StatusType
     Inc: () => void
     Reset: () => void
-
 }
 
-export const Scoreboard: React.FC<ScoreboardPropsType> =
-    ({
-         count, maxValue, startValue, status,
-         Inc, Reset
-     }) => {
+export const Scoreboard: React.FC<ScoreboardPropsType> = (
+    {
+        count, maxValue, startValue, status,
+        Inc, Reset
+    }) => {
 
-        return (
-            <div className={style.scoreboard}>
-                <div className={style.counter}>
-                    <Counter count={count} maxValue={maxValue} status={status}/>
+    return (
+        <div className={style.scoreboard}>
+            <div className={style.counter}>
+                <Counter count={count} maxValue={maxValue} status={status}/>
+            </div>
+            <div className={style.buttons}>
+                <div>
+                    <Button name={'INC'}
+                            callBack={Inc}
+                            disabled={count === maxValue
+                                || status !== 'counter'}/>
                 </div>
-                <div className={style.buttons}>
-                    <div>
-                        <Button name={'INC'}
-                                callBack={Inc}
-                                disabled={count === maxValue
-                                    || status !== 'counter'}/>
-                    </div>
-                    <div>
-                        <Button name={'RESET'}
-                                callBack={Reset}
-                                disabled={count === startValue
-                                    || status !== 'counter'}/>
-                    </div>
+                <div>
+                    <Button name={'RESET'}
+                            callBack={Reset}
+                            disabled={count === startValue
+                                || status !== 'counter'}/>
                 </div>
             </div>
-        )
-    }
+        </div>
+    )
+}

@@ -5,22 +5,19 @@ import {Settings} from './components/settings/Settings';
 import style from './App.module.css'
 import {useDispatch, useSelector} from 'react-redux';
 import {AppStateType} from './state/store';
-import {incAC, resetAC} from './state/countReducer';
-import {setMaxValueAC} from './state/maxValueReducer';
-import {setStartValueAC} from './state/startValueReducer';
-import {setSetAC} from './state/statusReducer';
+import {incAC, resetAC, setMaxValueAC, setSetAC, setStartValueAC} from './state/counterReducer';
 
 export type StatusType = 'counter' | 'setting' | 'error'
 
 function App() {
 
-    const count = useSelector<AppStateType, number>(state => state.count.value)
+    const count = useSelector<AppStateType, number>(state => state.counter.count)
     const countDispatch = useDispatch()
-    const maxValue = useSelector<AppStateType, number>(state => state.maxValue.value)
+    const maxValue = useSelector<AppStateType, number>(state => state.counter.maxValue)
     const maxValueDispatch = useDispatch()
-    const startValue = useSelector<AppStateType, number>(state => state.startValue.value)
+    const startValue = useSelector<AppStateType, number>(state => state.counter.startValue)
     const startValueDispatch = useDispatch()
-    const status = useSelector<AppStateType, StatusType>(state => state.status.value)
+    const status = useSelector<AppStateType, StatusType>(state => state.counter.status)
     const statusDispatch = useDispatch()
 
     const Reset = () => countDispatch(resetAC(startValue))
