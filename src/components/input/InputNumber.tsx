@@ -19,7 +19,7 @@ export const InputNumber: React.FC<InputNumberPropsType> =
                 <input className={error ? style.error : style.input}
                        max="9999"
                        type="number"
-                       value={value}
+                       value={value.toFixed()}
                        onBlur={onBlurHandler}
                        onChange={onChangeHandler}
                 />
