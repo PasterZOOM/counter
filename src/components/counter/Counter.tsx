@@ -9,19 +9,20 @@ type CounterPropsType = {
     status: StatusType
 }
 
-export const Counter: React.FC<CounterPropsType> =
-    ({count, maxValue, status}) => {
-        return (
-            status === 'error' ?
-                <div className={style.errorText}>
-                    Incorrect value!
-                </div> :
-                status === 'setting' ?
-                    <div className={style.setText}>
-                        Enter values and press "SET"
-                    </div> :
-                    <CounterValue count={count} maxValue={maxValue}/>
+export const Counter: React.FC<CounterPropsType> = (
+    {count, maxValue, status}) => {
 
-        )
-    }
+    return (
+        status === 'error' ?
+            <div className={style.errorText}>
+                Incorrect value!
+            </div> :
+            status === 'setting' ?
+                <div className={style.setText}>
+                    Enter values and press "SET"
+                </div> :
+                <CounterValue count={count} maxValue={maxValue}/>
+
+    )
+}
 
