@@ -58,9 +58,7 @@ export const Settings: React.FC<ScoreboardPropsType> = (
                 <div>
                     <Button name={'SET'}
                             callBack={setButtonOnChange}
-                            disabled={status !== 'setting'
-                                || (!startValue && status !== 'setting')
-                                || (!startValue && !maxValue)}/>
+                            disabled={status !== 'setting' || isNaN(startValue) || isNaN(maxValue)}/>
                 </div>
             </div>
         </div>
