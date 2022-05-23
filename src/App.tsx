@@ -17,7 +17,6 @@ function App() {
     const status = useSelector<AppStateType, StatusType>(state => state.counter.status)
     const counterDispatch = useDispatch()
 
-
     const Reset = () => counterDispatch(resetAC(startValue))
     const Inc = () => count < maxValue && counterDispatch(incAC())
 

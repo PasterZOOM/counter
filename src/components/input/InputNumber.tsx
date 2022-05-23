@@ -17,7 +17,6 @@ export const InputNumber: React.FC<InputNumberPropsType> =
         return (
             <div>
                 <input className={error ? style.error : style.input}
-                       max="9999"
                        type="number"
                        value={value.toFixed()}
                        onBlur={onBlurHandler}
