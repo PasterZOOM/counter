@@ -10,8 +10,7 @@ export type ScoreboardPropsType = {
     status: StatusType
     maxValue: number
     startValue: number
-    setCount: Dispatch
-    setStatus: Dispatch
+    counterDispatch: Dispatch
     ChangeMaxValue: (value: number) => void
     ChangeStartValue: (value: number) => void
 }
@@ -19,13 +18,13 @@ export type ScoreboardPropsType = {
 export const Settings: React.FC<ScoreboardPropsType> = (
     {
         status, maxValue, startValue,
-        setCount, setStatus, ChangeMaxValue, ChangeStartValue
+        counterDispatch, ChangeMaxValue, ChangeStartValue
     }) => {
 
-    (maxValue <= startValue || startValue < 0 || maxValue <= 0) && setStatus(setErrorAC())
+    (maxValue <= startValue || startValue < 0 || maxValue <= 0) && counterDispatch(setErrorAC())
     const setButtonOnChange = () => {
-        setStatus(setCounterAC())
-        setCount(resetAC(startValue))
+        counterDispatch(setCounterAC())
+        counterDispatch(resetAC(startValue))
     }
 
     return (

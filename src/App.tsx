@@ -12,26 +12,24 @@ export type StatusType = 'counter' | 'setting' | 'error'
 function App() {
 
     const count = useSelector<AppStateType, number>(state => state.counter.count)
-    const countDispatch = useDispatch()
     const maxValue = useSelector<AppStateType, number>(state => state.counter.maxValue)
-    const maxValueDispatch = useDispatch()
     const startValue = useSelector<AppStateType, number>(state => state.counter.startValue)
-    const startValueDispatch = useDispatch()
     const status = useSelector<AppStateType, StatusType>(state => state.counter.status)
-    const statusDispatch = useDispatch()
+    const counterDispatch = useDispatch()
 
-    const Reset = () => countDispatch(resetAC(startValue))
-    const Inc = () => count < maxValue && countDispatch(incAC())
+
+    const Reset = () => counterDispatch(resetAC(startValue))
+    const Inc = () => count < maxValue && counterDispatch(incAC())
 
     const ChangeStartValue = (value: number) => {
-        value > 9999 ? startValueDispatch(setStartValueAC(9999)) :
-            startValueDispatch(setStartValueAC(value))
-        statusDispatch(setSetAC())
+        value > 9999 ? counterDispatch(setStartValueAC(9999)) :
+            counterDispatch(setStartValueAC(value))
+        counterDispatch(setSetAC())
     }
     const ChangeMaxValue = (value: number) => {
-        value > 9999 ? maxValueDispatch(setMaxValueAC(9999)) :
-            maxValueDispatch(setMaxValueAC(value))
-        statusDispatch(setSetAC())
+        value > 9999 ? counterDispatch(setMaxValueAC(9999)) :
+            counterDispatch(setMaxValueAC(value))
+        counterDispatch(setSetAC())
     }
 
     return (
@@ -40,8 +38,7 @@ function App() {
                 <Settings status={status}
                           maxValue={maxValue}
                           startValue={startValue}
-                          setCount={countDispatch}
-                          setStatus={statusDispatch}
+                          counterDispatch={counterDispatch}
                           ChangeMaxValue={ChangeMaxValue}
                           ChangeStartValue={ChangeStartValue}
                 />
