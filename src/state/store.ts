@@ -1,4 +1,4 @@
-import {combineReducers, legacy_createStore as createStore} from 'redux';
+import {combineReducers, legacy_createStore} from 'redux';
 import {counterReducer} from './counterReducer';
 import {loadState, saveState} from '../utils/localStorageUtil';
 
@@ -6,7 +6,7 @@ const rootReducer = combineReducers({
     counter: counterReducer
 })
 
-export const store = createStore(rootReducer, loadState())
+export const store = legacy_createStore(rootReducer, loadState())
 
 store.subscribe(() => {
     saveState({

@@ -22,7 +22,6 @@ export const Counter: React.FC<CounterPropsType> = (
                     Enter values and press "SET"
                 </div> :
                 <CounterValue count={count} maxValue={maxValue}/>
-
     )
 }
 

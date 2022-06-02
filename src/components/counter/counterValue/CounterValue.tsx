@@ -23,6 +23,7 @@ export const CounterValue: React.FC<CounterValuePropsType> = (
     //
     // window.onclick = fontSize
     // window.onload = fontSize
+
     return <div className={count === maxValue ? style.redText : style.classicText}>
         {count}
     </div>

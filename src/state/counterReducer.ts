@@ -8,30 +8,13 @@ const SET_SET = 'SET_SET'
 const SET_ERROR = 'SET_ERROR'
 const SET_COUNTER = 'SET_COUNTER'
 
-export type IncAT = {
-    type: typeof INC,
-}
-export type ResetAT = {
-    type: typeof RESET,
-    startValue: number
-}
-export type setMaxValueAT = {
-    type: typeof SET_MAX_VALUE,
-    maxValue: number
-}
-export type setStartValueAT = {
-    type: typeof SET_START_VALUE,
-    startValue: number
-}
-export type setSetAT = {
-    type: typeof SET_SET,
-}
-export type setErrorAT = {
-    type: typeof SET_ERROR,
-}
-export type setCounterAT = {
-    type: typeof SET_COUNTER,
-}
+export type IncAT = ReturnType<typeof incAC>
+export type ResetAT = ReturnType<typeof resetAC>
+export type setMaxValueAT = ReturnType<typeof setMaxValueAC>
+export type setStartValueAT = ReturnType<typeof setStartValueAC>
+export type setSetAT = ReturnType<typeof setSetAC>
+export type setErrorAT = ReturnType<typeof setErrorAC>
+export type setCounterAT = ReturnType<typeof setCounterAC>
 
 type ActionsType = IncAT | ResetAT | setMaxValueAT | setStartValueAT | setSetAT | setErrorAT | setCounterAT
 
@@ -64,10 +47,10 @@ export const counterReducer = (state: InitialStateType = initialState, action: A
     }
 }
 
-export const incAC = (): IncAT => ({type: INC})
-export const resetAC = (startValue: number): ResetAT => ({type: RESET, startValue: startValue})
-export const setMaxValueAC = (newValue: number): setMaxValueAT => ({type: SET_MAX_VALUE, maxValue: newValue})
-export const setStartValueAC = (newValue: number): setStartValueAT => ({type: SET_START_VALUE, startValue: newValue})
-export const setSetAC = (): setSetAT => ({type: SET_SET})
-export const setErrorAC = (): setErrorAT => ({type: SET_ERROR})
-export const setCounterAC = (): setCounterAT => ({type: SET_COUNTER})
+export const incAC = () => ({type: INC} as const)
+export const resetAC = (startValue: number) => ({type: RESET, startValue: startValue} as const)
+export const setMaxValueAC = (newValue: number) => ({type: SET_MAX_VALUE, maxValue: newValue} as const)
+export const setStartValueAC = (newValue: number) => ({type: SET_START_VALUE, startValue: newValue} as const)
+export const setSetAC = () => ({type: SET_SET} as const)
+export const setErrorAC = () => ({type: SET_ERROR} as const)
+export const setCounterAC = () => ({type: SET_COUNTER} as const)
