@@ -15,20 +15,18 @@ function App() {
     const maxValue = useSelector<AppStateType, number>(state => state.counter.maxValue)
     const startValue = useSelector<AppStateType, number>(state => state.counter.startValue)
     const status = useSelector<AppStateType, StatusType>(state => state.counter.status)
-    const counterDispatch = useDispatch()
+    const dispatch = useDispatch()
 
-    const Reset = () => counterDispatch(resetAC(startValue))
-    const Inc = () => count < maxValue && counterDispatch(incAC())
+    const Reset = () => dispatch(resetAC(startValue))
+    const Inc = () => count < maxValue && dispatch(incAC())
 
     const ChangeStartValue = (value: number) => {
-        value > 9999 ? counterDispatch(setStartValueAC(9999)) :
-            counterDispatch(setStartValueAC(value))
-        counterDispatch(setSetAC())
+        value > 9999 ? dispatch(setStartValueAC(9999)) : dispatch(setStartValueAC(value));
+        dispatch(setSetAC())
     }
     const ChangeMaxValue = (value: number) => {
-        value > 9999 ? counterDispatch(setMaxValueAC(9999)) :
-            counterDispatch(setMaxValueAC(value))
-        counterDispatch(setSetAC())
+        value > 9999 ? dispatch(setMaxValueAC(9999)) : dispatch(setMaxValueAC(value));
+        dispatch(setSetAC())
     }
 
     return (
@@ -37,7 +35,7 @@ function App() {
                 <Settings status={status}
                           maxValue={maxValue}
                           startValue={startValue}
-                          counterDispatch={counterDispatch}
+                          dispatch={dispatch}
                           ChangeMaxValue={ChangeMaxValue}
                           ChangeStartValue={ChangeStartValue}
                 />

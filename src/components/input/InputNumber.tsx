@@ -10,7 +10,7 @@ type InputNumberPropsType = {
 export const InputNumber: React.FC<InputNumberPropsType> = ({callBack, error, value}) => {
 
     const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) =>
-        callBack(isNaN(e.currentTarget.valueAsNumber) ? 0 : e.currentTarget.valueAsNumber)
+        callBack(isNaN(e.currentTarget.valueAsNumber) ? 0 : Math.trunc(e.currentTarget.valueAsNumber))
 
     return <div>
         <input className={error ? style.error : style.input}

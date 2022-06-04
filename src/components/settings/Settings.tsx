@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Button} from '../button/Button';
 import style from './Settings.module.css'
 import {InputNumber} from '../input/InputNumber';
@@ -10,7 +10,7 @@ export type ScoreboardPropsType = {
     status: StatusType
     maxValue: number
     startValue: number
-    counterDispatch: Dispatch
+    dispatch: Dispatch
     ChangeMaxValue: (value: number) => void
     ChangeStartValue: (value: number) => void
 }
@@ -18,13 +18,16 @@ export type ScoreboardPropsType = {
 export const Settings: React.FC<ScoreboardPropsType> = (
     {
         status, maxValue, startValue,
-        counterDispatch, ChangeMaxValue, ChangeStartValue
+        dispatch, ChangeMaxValue, ChangeStartValue
     }) => {
 
-    (maxValue <= startValue || startValue < 0 || maxValue <= 0) && counterDispatch(setErrorAC())
+    useEffect(() => {
+        (maxValue <= startValue || startValue < 0 || maxValue <= 0) && dispatch(setErrorAC())
+    })
+
     const setButtonOnChange = () => {
-        counterDispatch(setCounterAC())
-        counterDispatch(resetAC(startValue))
+        dispatch(setCounterAC())
+        dispatch(resetAC(startValue))
     }
 
     return (
