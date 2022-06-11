@@ -15,11 +15,14 @@ export type ScoreboardPropsType = {
     ChangeStartValue: (value: number) => void
 }
 
-export const Settings: React.FC<ScoreboardPropsType> = (
-    {
-        status, maxValue, startValue,
-        dispatch, ChangeMaxValue, ChangeStartValue
-    }) => {
+export const Settings: React.FC<ScoreboardPropsType> = ({
+                                                            status,
+                                                            maxValue,
+                                                            startValue,
+                                                            dispatch,
+                                                            ChangeMaxValue,
+                                                            ChangeStartValue
+                                                        }) => {
 
     useEffect(() => {
         (maxValue <= startValue || startValue < 0 || maxValue <= 0) && dispatch(setErrorAC())
