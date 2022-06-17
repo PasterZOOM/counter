@@ -1,37 +1,42 @@
-import React, {useEffect} from 'react';
+import React, {useCallback, useEffect} from 'react';
 import {Button} from '../button/Button';
 import style from './Settings.module.css'
 import {InputNumber} from '../input/InputNumber';
-import {StatusType} from '../../App';
-import {Dispatch} from 'redux';
-import {resetAC, setCounterAC, setErrorAC} from '../../state/counterReducer';
+import {
+    InitialStateType,
+    resetAC,
+    setCounterAC,
+    setErrorAC,
+    setMaxValueAC,
+    setSetAC,
+    setStartValueAC
+} from '../../state/counterReducer';
+import {useDispatch, useSelector} from 'react-redux';
+import {AppStateType} from '../../state/store';
 
-export type ScoreboardPropsType = {
-    status: StatusType
-    maxValue: number
-    startValue: number
-    dispatch: Dispatch
-    ChangeMaxValue: (value: number) => void
-    ChangeStartValue: (value: number) => void
-}
 
-export const Settings: React.FC<ScoreboardPropsType> = ({
-                                                            status,
-                                                            maxValue,
-                                                            startValue,
-                                                            dispatch,
-                                                            ChangeMaxValue,
-                                                            ChangeStartValue
-                                                        }) => {
+export const Settings = () => {
+
+    const {maxValue, startValue, status} = useSelector<AppStateType, InitialStateType>(state => state.counter)
+    const dispatch = useDispatch()
 
     useEffect(() => {
-        (maxValue <= startValue || startValue < 0 || maxValue <= 0) && dispatch(setErrorAC())
-    })
+        ((maxValue <= startValue || startValue < 0 || maxValue <= 0) && status !== 'error') && dispatch(setErrorAC())
+    }, [status, maxValue, startValue, dispatch])
 
-    const setButtonOnChange = () => {
+    const ChangeStartValue = useCallback((value: number) => {
+        value > 9999 ? dispatch(setStartValueAC(9999)) : dispatch(setStartValueAC(value))
+        status !== 'setting' && dispatch(setSetAC())
+    }, [dispatch, status])
+    const ChangeMaxValue = useCallback((value: number) => {
+        value > 9999 ? dispatch(setMaxValueAC(9999)) : dispatch(setMaxValueAC(value))
+        status !== 'setting' && dispatch(setSetAC())
+    }, [dispatch, status])
+
+    const setButtonOnChange = useCallback(() => {
         dispatch(setCounterAC())
         dispatch(resetAC(startValue))
-    }
+    }, [dispatch, startValue])
 
     return (
         <div className={style.setting}>
@@ -63,7 +68,7 @@ export const Settings: React.FC<ScoreboardPropsType> = ({
                 <div>
                     <Button name={'SET'}
                             callBack={setButtonOnChange}
-                            disabled={status !== 'setting' || isNaN(startValue) || isNaN(maxValue)}/>
+                            disabled={status !== 'setting'}/>
                 </div>
             </div>
         </div>

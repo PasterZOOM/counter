@@ -9,9 +9,7 @@ type CounterPropsType = {
     status: StatusType
 }
 
-export const Counter: React.FC<CounterPropsType> = (
-    {count, maxValue, status}) => {
-
+export const Counter: React.FC<CounterPropsType> = React.memo( ({count, maxValue, status}) => {
     return (
         status === 'error' ?
             <div className={style.errorText}>
@@ -23,5 +21,5 @@ export const Counter: React.FC<CounterPropsType> = (
                 </div> :
                 <CounterValue count={count} maxValue={maxValue}/>
     )
-}
+})
 

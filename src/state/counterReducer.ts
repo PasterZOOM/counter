@@ -24,7 +24,7 @@ const initialState = {
     startValue: 0,
     status: 'setting' as StatusType
 }
-type InitialStateType = typeof initialState
+export type InitialStateType = typeof initialState
 
 export const counterReducer = (state: InitialStateType = initialState, action: ActionsType): InitialStateType => {
     switch (action.type) {

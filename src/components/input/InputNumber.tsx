@@ -7,7 +7,7 @@ type InputNumberPropsType = {
     value: number
 }
 
-export const InputNumber: React.FC<InputNumberPropsType> = ({callBack, error, value}) => {
+export const InputNumber: React.FC<InputNumberPropsType> = React.memo(({callBack, error, value}) => {
 
     const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) =>
         callBack(isNaN(e.currentTarget.valueAsNumber) ? 0 : Math.trunc(e.currentTarget.valueAsNumber))
@@ -19,4 +19,4 @@ export const InputNumber: React.FC<InputNumberPropsType> = ({callBack, error, va
                value={value.toFixed()}
         />
     </div>
-}
+})

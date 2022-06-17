@@ -6,8 +6,7 @@ export type CounterValuePropsType = {
     count: number
     maxValue: number
 }
-export const CounterValue: React.FC<CounterValuePropsType> = (
-    {count, maxValue}) => {
+export const CounterValue: React.FC<CounterValuePropsType> = React.memo(({count, maxValue}) => {
 
     // const fontSize = () => {
     //     let text = document.querySelector(`.${style.classicText}`) as HTMLElement
@@ -27,4 +26,4 @@ export const CounterValue: React.FC<CounterValuePropsType> = (
     return <div className={count === maxValue ? style.redText : style.classicText}>
         {count}
     </div>
-}
+})

@@ -1,23 +1,18 @@
-import React from 'react';
+import React, {useCallback} from 'react';
 import {Button} from '../button/Button';
 import {Counter} from '../counter/Counter';
 import style from './Scoreboard.module.css'
-import {StatusType} from '../../App';
+import {incAC, InitialStateType, resetAC} from '../../state/counterReducer';
+import {useDispatch, useSelector} from 'react-redux';
+import {AppStateType} from '../../state/store';
 
-export type ScoreboardPropsType = {
-    count: number
-    maxValue: number
-    startValue: number
-    status: StatusType
-    Inc: () => void
-    Reset: () => void
-}
+export const Scoreboard = () => {
 
-export const Scoreboard: React.FC<ScoreboardPropsType> = (
-    {
-        count, maxValue, startValue, status,
-        Inc, Reset
-    }) => {
+    const {count, maxValue, startValue, status} = useSelector<AppStateType, InitialStateType>(state => state.counter)
+    const dispatch = useDispatch()
+
+    const Reset = useCallback(() => dispatch(resetAC(startValue)), [dispatch, startValue])
+    const Inc = useCallback(() => count < maxValue && dispatch(incAC()), [dispatch, count, maxValue])
 
     return (
         <div className={style.scoreboard}>

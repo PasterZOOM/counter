@@ -7,14 +7,13 @@ type ButtonPropsType = {
     callBack: () => void
 }
 
-export const Button: React.FC<ButtonPropsType> =
-    ({name, disabled, callBack}) => {
-        return (
-            <>
-                <button className={style.button}
-                        onClick={callBack}
-                        disabled={disabled}
-                >{name}</button>
-            </>
-        )
-    }
+export const Button: React.FC<ButtonPropsType> = React.memo(({name, disabled, callBack}) => {
+    return (
+        <>
+            <button className={style.button}
+                    onClick={callBack}
+                    disabled={disabled}
+            >{name}</button>
+        </>
+    )
+})
