@@ -1,14 +1,18 @@
-import React, {useCallback} from 'react';
-import {Button} from '../button/Button';
-import {Counter} from '../counter/Counter';
+import React, {useCallback} from 'react'
+import {Button} from '../button/Button'
+import {Counter} from '../counter/Counter'
 import style from './Scoreboard.module.css'
-import {incAC, InitialStateType, resetAC} from '../../state/counterReducer';
-import {useDispatch, useSelector} from 'react-redux';
-import {AppStateType} from '../../state/store';
+import {incAC, resetAC} from '../../state/counterReducer'
+import {useDispatch, useSelector} from 'react-redux'
+import {AppStateType} from '../../state/store'
+import {StatusType} from '../../App'
 
 export const Scoreboard = () => {
 
-    const {count, maxValue, startValue, status} = useSelector<AppStateType, InitialStateType>(state => state.counter)
+    const count = useSelector<AppStateType, number>(state => state.counter.count)
+    const maxValue = useSelector<AppStateType, number>(state => state.counter.maxValue)
+    const startValue = useSelector<AppStateType, number>(state => state.counter.startValue)
+    const status = useSelector<AppStateType, StatusType>(state => state.counter.status)
     const dispatch = useDispatch()
 
     const Reset = useCallback(() => dispatch(resetAC(startValue)), [dispatch, startValue])
